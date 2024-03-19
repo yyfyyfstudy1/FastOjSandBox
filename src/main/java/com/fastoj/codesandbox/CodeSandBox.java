@@ -4,6 +4,8 @@ package com.fastoj.codesandbox;
 import com.fastoj.codesandbox.model.ExecuteCodeRequest;
 import com.fastoj.codesandbox.model.ExecuteCodeResponse;
 
+import java.io.FileNotFoundException;
+
 /**
  * 代码沙箱接口定义
  *
@@ -18,5 +20,5 @@ public interface CodeSandBox {
      * @param executeCodeRequest
      * @return
      */
-    ExecuteCodeResponse executeCode(ExecuteCodeRequest executeCodeRequest);
+    ExecuteCodeResponse executeCode(ExecuteCodeRequest executeCodeRequest) throws FileNotFoundException;
 }

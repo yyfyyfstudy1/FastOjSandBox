@@ -8,12 +8,24 @@ import com.fastoj.codesandbox.model.ExecuteCodeResponse;
 import com.fastoj.codesandbox.model.ExecuteMessage;
 import com.fastoj.codesandbox.model.JudgeInfo;
 import com.fastoj.codesandbox.utils.ProcessUtils;
+import com.github.javaparser.JavaParser;
+import com.github.javaparser.ParseResult;
+import com.github.javaparser.StaticJavaParser;
+import com.github.javaparser.ast.CompilationUnit;
+import com.github.javaparser.ast.Modifier;
+import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
+import com.github.javaparser.ast.body.MethodDeclaration;
+import com.github.javaparser.ast.stmt.BlockStmt;
+import com.github.javaparser.ast.stmt.Statement;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 /**
@@ -37,7 +49,7 @@ public abstract class JavaCodeSandboxTemplate implements CodeSandBox {
      * @return
      */
     @Override
-    public ExecuteCodeResponse executeCode(ExecuteCodeRequest executeCodeRequest) {
+    public ExecuteCodeResponse executeCode(ExecuteCodeRequest executeCodeRequest) throws FileNotFoundException {
 
         List<String> inputList = executeCodeRequest.getInputList();
         String code = executeCodeRequest.getCode();
@@ -63,6 +75,8 @@ public abstract class JavaCodeSandboxTemplate implements CodeSandBox {
 
         return outputResponse;
     }
+
+
 
     /**
      * 1、将用户提交的代码保存为文件。

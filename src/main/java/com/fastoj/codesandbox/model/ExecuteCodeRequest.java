@@ -23,4 +23,6 @@ public class ExecuteCodeRequest {
     private String code;
 
     private String language;
+
+    private String mainFunction;
 }

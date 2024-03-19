@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.FileNotFoundException;
 
 /**
  * @author Shier
@@ -38,7 +39,7 @@ public class ExecutedController {
      */
     @PostMapping("/executeCode")
     public ExecuteCodeResponse executeCode(@RequestBody ExecuteCodeRequest executeCodeRequest,
-                                           HttpServletRequest request, HttpServletResponse response) {
+                                           HttpServletRequest request, HttpServletResponse response) throws FileNotFoundException {
         String authHeader = request.getHeader(AuthRequest.AUTH_REQUEST_HEADER);
         // 基本的认证
         if (!AuthRequest.AUTH_REQUEST_SECRET.equals(authHeader)) {

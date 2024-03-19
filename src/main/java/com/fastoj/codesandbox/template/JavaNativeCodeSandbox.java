@@ -4,6 +4,8 @@ import com.fastoj.codesandbox.model.ExecuteCodeRequest;
 import com.fastoj.codesandbox.model.ExecuteCodeResponse;
 import org.springframework.stereotype.Component;
 
+import java.io.FileNotFoundException;
+
 /**
  * 原生Java代码沙箱 - 实现模板方法
  *
@@ -19,7 +21,7 @@ public class JavaNativeCodeSandbox extends JavaCodeSandboxTemplate {
      * @return
      */
     @Override
-    public ExecuteCodeResponse executeCode(ExecuteCodeRequest executeCodeRequest) {
+    public ExecuteCodeResponse executeCode(ExecuteCodeRequest executeCodeRequest) throws FileNotFoundException {
         return super.executeCode(executeCodeRequest);
     }
 }
