@@ -132,6 +132,8 @@ public abstract class JavaCodeSandboxTemplate implements CodeSandBox {
         List<ExecuteMessage> executeMessageList = new ArrayList<>();
         for (String inputArgs : inputList) {
             String runCmd = String.format("java -Xmx256m -Dfile.encoding=UTF-8 -cp %s Main %s", userCodeParentPath, inputArgs);
+            System.out.println("执行命令：");
+            System.out.println(runCmd);
             // todo 使用Docker时区分win和Linux的写法 win：%s;%s Linux：%s:%s
             // String runCmd = String.format("java -Xmx256m -Dfile.encoding=UTF-8 -cp %s;%s -Djava.security.manager=%s Main %s", userCodeParentPath, SECURITY_MANAGER_PATH, SECURITY_MANAGER_CLASS_NAME, inputArgs);
             try {
